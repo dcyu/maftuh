@@ -21,6 +21,11 @@ class CheckpointsController < ApplicationController
 
   def show
     @checkpoint = Checkpoint.find(params[:id])
+
+    @tweets = $twitter.search("to:testmaftuh #{@checkpoint.name}", result_type: "recent").take(5)
+
+    @status = @tweets.first.text.include?("open")
+    @checkpoint.update(open: @status)
   end
 
   def edit

@@ -1,11 +1,32 @@
-%h1=@checkpoint.name
-
-%h2
+%h1
+  =@checkpoint.name
   Checkpoint is
   -if @checkpoint.open
     %strong open
   -else
-    %strong
+    %strong closed
+
+
+%br/
+%br/
+
+%h3 Recent Activity
+%ul
+  -@tweets.each do |tweet|
+    %li
+      #{tweet.text} - 
+      %a{:href => "https://www.twitter.com/#{tweet.user.screen_name}", target: "_blank"}
+        @#{tweet.user.screen_name}
+      \-
+      %strong
+        #{tweet.created_at.to_formatted_s(:long)}
+        
+
+%br/
+%br/
+%br/
+%br/
+
 
 
 =link_to 'Edit', edit_checkpoint_path(@checkpoint)
