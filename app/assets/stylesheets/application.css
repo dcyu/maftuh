@@ -11,3 +11,19 @@
  *= require_self
  *= require_tree .
  */
+
+.name{
+  margin: 1% 0;
+}
+
+.name .name-label{
+  font-size: large;
+}
+
+.open{
+  padding: 1% 0;
+}
+
+.open .open-label{
+  font-size: large;
+}

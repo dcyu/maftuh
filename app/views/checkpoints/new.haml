@@ -7,21 +7,21 @@
           %li= msg
 
   %form
-    %fieldset
-      %legend 
+    %fieldset.text-center
+      %legend
         = I18n.t('new_checkpoint')
-      .field
-        %label
-          = f.label :name
-        
-        = f.text_field :name
-      .field
-        %p Is this open?
-        = f.label :open, "True"
-        = f.radio_button :open, "true"
-        
-        = f.label :open, "False"
+     
+      .name
+        = f.label :name, class: "name-label"
+        = f.text_field :name, placeholder: "Name..."
+      .open.checkbox.in-line
+        %span.open-label
+          = I18n.t('open_question')
+        = f.label :open, I18n.t('yes_open'), class: "css-label.lite-blue-check"
+        = f.radio_button :open, "true", class: "css-checkbox"
+
+        = f.label :open, I18n.t('no_open')
         = f.radio_button :open, "false"
 
-      .actions
+      .btn
         = f.submit 'Save'
