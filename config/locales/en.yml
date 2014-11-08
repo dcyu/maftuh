@@ -28,3 +28,7 @@ en:
   name: "Name"
   yes_open: "Yes"
   no_open: "No"
+
+  errors:
+    name:
+      unique: "Name of checkpoint must be unique"

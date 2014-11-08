@@ -22,7 +22,7 @@
 }
 
 .open{
-  padding: 2% 0;
+  padding: 2% 0 0 0;
 }
 
 .open .open-label{
@@ -32,5 +32,10 @@
 .open .radio-label {
   font-size: 15px;
   margin: 0 2px 0 0;
+}
+
+.btn.left-btn{
+  padding-left: 0;
+  margin-left: 0;
 }
 
