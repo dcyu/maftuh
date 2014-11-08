@@ -10,9 +10,6 @@ class CheckpointsController < ApplicationController
   end
 
   def create
-  end
-
-  def create
     @checkpoint = Checkpoint.new(checkpoint_params)
 
     if @checkpoint.save
@@ -24,6 +21,26 @@ class CheckpointsController < ApplicationController
 
   def show
     @checkpoint = Checkpoint.find(params[:id])
+  end
+
+  def edit
+    @checkpoint = Checkpoint.find(params[:id])
+  end
+
+
+  def update
+    @checkpoint = Checkpoint.find(params[:id])
+    if @checkpoint.update(checkpoint_params)
+      redirect_to checkpoint_path(@checkpoint), notice: "Checkpoint Updated"
+    else
+      render action: 'edit'
+    end
+  end
+
+  def destroy
+    @checkpoint = Checkpoint.find(params[:id])
+    @checkpoint.destroy
+    redirect_to checkpoints_path
   end
 
 

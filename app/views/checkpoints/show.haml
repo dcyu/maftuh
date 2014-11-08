@@ -1,1 +1,13 @@
-Welcome to Maftuh
+%h1=@checkpoint.name
+
+%h2
+  Checkpoint is
+  -if @checkpoint.open
+    %strong open
+  -else
+    %strong
+
+
+=link_to 'Edit', edit_checkpoint_path(@checkpoint)
+
+=link_to 'Destroy',  { action: :destroy, id: @checkpoint.id }, method: :delete, data: { confirm: 'Are you sure?' }
