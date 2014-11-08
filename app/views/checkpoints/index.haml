@@ -1,0 +1,8 @@
+%h1 Checkpoints
+
+%ul
+  -@checkpoints.each do |checkpoint|
+    %li
+      %h3
+        %a{:href => "#{checkpoint_path(checkpoint)}"}
+          =checkpoint.name
