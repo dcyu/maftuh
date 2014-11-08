@@ -1,1 +1,18 @@
-Welcome to Maftuh
+%h1=@checkpoint.name
+%hr
+
+%h3
+  Checkpoint is
+  -if @checkpoint.open
+    %strong open
+    
+    .wait-time
+      Estimated wait time is @checkpoint.
+      wait_time
+  -else
+    %strong closed
+
+
+/ =link_to 'Edit', edit_checkpoint_path(@checkpoint)
+
+/ =link_to 'Destroy',  { action: :destroy, id: @checkpoint.id }, method: :delete, data: { confirm: 'Are you sure?' }

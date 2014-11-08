@@ -18,12 +18,19 @@
 
 .name .name-label{
   font-size: large;
+  margin: 0 4px 0 0;
 }
 
 .open{
-  padding: 1% 0;
+  padding: 2% 0;
 }
 
 .open .open-label{
   font-size: large;
 }
+
+.open .radio-label {
+  font-size: 15px;
+  margin: 0 2px 0 0;
+}
+

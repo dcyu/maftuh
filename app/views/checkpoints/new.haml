@@ -17,11 +17,12 @@
       .open.checkbox.in-line
         %span.open-label
           = I18n.t('open_question')
-        = f.label :open, I18n.t('yes_open'), class: "css-label.lite-blue-check"
-        = f.radio_button :open, "true", class: "css-checkbox"
+        = f.label :open, I18n.t('yes_open'), class: "radio-label"
+        = f.radio_button :open, "true"
 
-        = f.label :open, I18n.t('no_open')
+        = f.label :open, I18n.t('no_open'), class: "radio-label"
         = f.radio_button :open, "false"
+
 
       .btn
         = f.submit 'Save'
