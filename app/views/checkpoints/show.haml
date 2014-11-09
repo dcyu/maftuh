@@ -15,8 +15,6 @@
   %a{:href => "https://www.twitter.com/testmaftuh", target: "_blank"}
     @testmaftuh
   =t('instructions2', checkpoint: @checkpoint.name_locale) 
-
-%br/
 %br/
 
 .row
@@ -24,7 +22,7 @@
     #map-canvas{:style => "width: 650px; height: 400px"}
 
   .col-md-5
-    -if @tweets.count > 0
+    -if @all_messages.count > 0
       #chart
       = render_chart(@chart, 'chart')
 
@@ -37,7 +35,7 @@
     %ul
       -@all_messages.each do |message|
         %li
-          #{message.text} - 
+          #{message.text} -
           -if message.user
             %a{:href => "https://www.twitter.com/#{message.user.screen_name}", target: "_blank"}
               @#{message.user.screen_name}
@@ -78,5 +76,3 @@
     });
   }
   google.maps.event.addDomListener(window, 'load', initialize);
-
-%br/

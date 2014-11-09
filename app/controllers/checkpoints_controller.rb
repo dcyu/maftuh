@@ -21,10 +21,12 @@ class CheckpointsController < ApplicationController
 
   def show
     @checkpoint = Checkpoint.find(params[:id])
+    if @checkpoint.nil?
+      redirect_to checkpoints_path
+    end
     @geo = Geocoder.coordinates(@checkpoint.name)
 
     @tweets = $twitter.search("to:testmaftuh #{@checkpoint.name}", result_type: "recent")
-
     @all_messages = (@tweets.to_a + @checkpoint.messages).sort_by(&:created_at).reverse
 
     if @all_messages.count > 0
@@ -37,13 +39,12 @@ class CheckpointsController < ApplicationController
       data_table.new_column('number', 'Closed')
 
       # Add Rows and Values
-      grouped_messages = (@all_messages).group_by{|x| ((Time.now - x.created_at)/3600).round}.sort_by { |time, messages| time } 
-
-
+      grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.
+                                         sort_by { |time| time }
 
       grouped_messages.each do |messages|
-        open_messages = messages.last.select{|message| message.text.include?("open")}
-        closed_messages = messages.last.select{|message| message.text.include?("closed")}
+        open_messages = messages.last.select{|message| message.text.include?('open')}
+        closed_messages = messages.last.select{|message| message.text.include?('closed')}
 
         if grouped_messages.first == messages
           if open_messages.count > closed_messages.count
@@ -58,17 +59,14 @@ class CheckpointsController < ApplicationController
         ]]
         )
       end
+      option = { width: 400, height: 400, title: 'Recent Status Updates', colors: ['#009900', '#990000'] }
+      @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
     end
-
-    option = { width: 400, height: 400, title: 'Recent Status Updates', colors: ['#009900', '#990000'] }
-    @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
-
   end
 
   def edit
     @checkpoint = Checkpoint.find(params[:id])
   end
-
 
   def update
     @checkpoint = Checkpoint.find(params[:id])
@@ -84,7 +82,6 @@ class CheckpointsController < ApplicationController
     @checkpoint.destroy
     redirect_to checkpoints_path
   end
-
 
   private
 
