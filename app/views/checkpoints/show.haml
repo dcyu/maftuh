@@ -2,9 +2,10 @@
 
 %h1
   =@checkpoint.name
-  Checkpoint is currently
+  =t('checkpoint')
+  is currently
   -if @checkpoint.open
-    %strong.green open
+    %strong.green open    
   -else
     %strong.red closed
 
@@ -79,3 +80,4 @@
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 
+%br/

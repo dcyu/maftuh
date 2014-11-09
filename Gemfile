@@ -45,6 +45,10 @@ gem "google_visualr"
 
 gem "geocoder"
 
+gem "binding_of_caller"
+gem 'better_errors'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

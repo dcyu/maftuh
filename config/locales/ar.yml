@@ -1,0 +1,15 @@
+ar:
+  "Chicago": "شيكاغو"
+  hello: "Hello world"
+
+  new_checkpoint: "New Checkpoint"
+  checkpoint: "حاجز"
+  open_question: "Is this checkpoint open?"
+  name: "Name"
+  yes_open: "Yes"
+  no_open: "No"
+
+  errors:
+    name:
+      unique: "Name of checkpoint must be unique"
+

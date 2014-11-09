@@ -6,16 +6,23 @@
         - @checkpoint.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    %p Is this open?
-    = f.label :open, "True"
-    = f.radio_button :open, "true", checked: true
-    
-    = f.label :open, "False"
-    = f.radio_button :open, "false"
+  %form
+    %fieldset.text-center
+      %legend
+        = I18n.t('new_checkpoint')
+     
+      .name
+        = f.label :name, class: "name-label"
+        = f.text_field :name, placeholder: "Name..."
+      .open.checkbox.in-line
+        %span.open-label
+          = I18n.t('open_question')
+        = f.label :open, I18n.t('yes_open'), class: "radio-label"
+        = f.radio_button :open, "true"
 
-  .actions
-    = f.submit 'Save'
+        = f.label :open, I18n.t('no_open'), class: "radio-label"
+        = f.radio_button :open, "false"
+
+
+      .btn.left-btn
+        = f.submit 'Save'
