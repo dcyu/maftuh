@@ -1,7 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+c1 = Checkpoint.create(name: "Chicago", open: true)
+Message.create(checkpoint_id: c1.id, body: "Chicago is open")
+Message.create(checkpoint_id: c1.id, body: "Chicago is closed")
+Message.create(checkpoint_id: c1.id, body: "Chicago is open")
+c2 = Checkpoint.create(name: "New York", open: false)
+Message.create(checkpoint_id: c2.id, body: "New York is false")
+Message.create(checkpoint_id: c2.id, body: "New York is open")
