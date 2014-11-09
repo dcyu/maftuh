@@ -1,5 +1,6 @@
 class CheckpointsController < ApplicationController
   protect_from_forgery with: :exception
+  require 'matrix'
 
   def index
     @checkpoints = Checkpoint.all
@@ -29,9 +30,6 @@ class CheckpointsController < ApplicationController
       @status = @tweets.first.text.include?("open")
       # @checkpoint.update(open: @status)
 
-      @open_tweets = @tweets.select{|tweet| tweet.text.include?("open")}
-      @closed_tweets = @tweets.select{|tweet| tweet.text.include?("closed")}
-
       data_table = GoogleVisualr::DataTable.new
 
       # Add Column Headers
@@ -40,21 +38,22 @@ class CheckpointsController < ApplicationController
       data_table.new_column('number', 'Closed')
 
       # Add Rows and Values
-      grouped_tweets = @tweets.group_by{|x| x.created_at.strftime("%Y-%m-%d-%H")} 
+      grouped_messages = (@tweets.to_a + @checkpoint.messages).group_by{|x| ((Time.now - x.created_at)/3600).round}.sort_by { |time, messages| time }.reverse 
 
-      grouped_tweets.reverse_each do |tweets|
-        open_tweets = tweets.last.select{|tweet| tweet.text.include?("open")}
-        closed_tweets = tweets.last.select{|tweet| tweet.text.include?("closed")}
+
+      grouped_messages.reverse_each do |messages|
+        open_messages = messages.last.select{|message| message.text.include?("open")}
+        closed_messages = messages.last.select{|message| message.text.include?("closed")}
 
         data_table.add_rows([[
-          (Time.parse(tweets.first) + tweets.first.split('-').last.to_i.hours).to_formatted_s(:long), open_tweets.count, closed_tweets.count
+          "#{messages.first} hours ago", open_messages.count, closed_messages.count
         ]]
         )
       end
     end
 
-    option = { width: 400, height: 200, title: 'Recent Status Updates', colors: ['#009900', '#990000'] }
-    @chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
+    option = { width: 400, height: 400, title: 'Recent Status Updates', colors: ['#009900', '#990000'] }
+    @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
 
   end
 
