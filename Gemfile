@@ -37,7 +37,13 @@ end
 
 gem 'twitter'
 
+gem 'twilio-ruby'
+
 gem 'figaro'
+
+gem "google_visualr"
+
+gem "geocoder"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

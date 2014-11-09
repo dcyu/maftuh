@@ -39,3 +39,8 @@
   margin-left: 0;
 }
 
+#map-canvas{
+  width: 650px; 
+  height: 350px;
+}
+
