@@ -2,8 +2,10 @@
 %html
   %head
     %title Maftuh
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    %script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"}
+    %script{src: "https://www.google.com/jsapi"}
     = csrf_meta_tags
   %body
     %nav.navbar.navbar-default{:role => "navigation"}
@@ -21,21 +23,17 @@
           %ul.nav.navbar-nav
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#{checkpoints_path}"}
-                All Checkpoints
+                Checkpoints
                 %span.caret
               %ul.dropdown-menu{:role => "menu"}
-                %li
-                  %a{:href => "#"} Action
-                %li
-                  %a{:href => "#"} Another action
-                %li
-                  %a{:href => "#"} Something else here
+                -checkpoints = Checkpoint.all
+                -checkpoints.each do |checkpoint|
+                  %li
+                    =link_to checkpoint.name, checkpoint_path(checkpoint)
                 %li.divider
                 %li
-                  %a{:href => "#"} Separated link
-                %li.divider
-                %li
-                  %a{:href => "#"} One more separated link
+                  =link_to 'All Checkpoints', checkpoints_path
+
             %li
               %a{:href => "#switch_lang"} العربي
           %form.navbar-form.navbar-left{:role => "search"}
