@@ -26,9 +26,9 @@ class CheckpointsController < ApplicationController
 
     @tweets = $twitter.search("to:testmaftuh #{@checkpoint.name}", result_type: "recent")
 
-    if @tweets.count > 0
-      @status = @tweets.first.text.include?("open")
-      # @checkpoint.update(open: @status)
+    @all_messages = (@tweets.to_a + @checkpoint.messages).sort_by(&:created_at).reverse
+
+    if @all_messages.count > 0
 
       data_table = GoogleVisualr::DataTable.new
 
@@ -38,12 +38,21 @@ class CheckpointsController < ApplicationController
       data_table.new_column('number', 'Closed')
 
       # Add Rows and Values
-      grouped_messages = (@tweets.to_a + @checkpoint.messages).group_by{|x| ((Time.now - x.created_at)/3600).round}.sort_by { |time, messages| time }.reverse 
+      grouped_messages = (@all_messages).group_by{|x| ((Time.now - x.created_at)/3600).round}.sort_by { |time, messages| time } 
 
 
-      grouped_messages.reverse_each do |messages|
+
+      grouped_messages.each do |messages|
         open_messages = messages.last.select{|message| message.text.include?("open")}
         closed_messages = messages.last.select{|message| message.text.include?("closed")}
+
+        if grouped_messages.first == messages
+          if open_messages.count > closed_messages.count
+            @checkpoint.update(open: true)
+          elsif closed_messages.count > open_messages.count
+            @checkpoint.update(open: false)
+          end
+        end
 
         data_table.add_rows([[
           "#{messages.first} hours ago", open_messages.count, closed_messages.count

@@ -27,14 +27,17 @@
   .col-md-6
     %h3 Recent Reports
     %ul
-      -@tweets.each do |tweet|
+      -@all_messages.each do |message|
         %li
-          #{tweet.text} - 
-          %a{:href => "https://www.twitter.com/#{tweet.user.screen_name}", target: "_blank"}
-            @#{tweet.user.screen_name}
+          #{message.text} - 
+          -if message.user
+            %a{:href => "https://www.twitter.com/#{message.user.screen_name}", target: "_blank"}
+              @#{message.user.screen_name}
+          -else
+            SMS
           \-
           %strong
-            #{tweet.created_at.to_formatted_s(:long)}
+            #{message.created_at.to_formatted_s(:long)}
 
 
 
