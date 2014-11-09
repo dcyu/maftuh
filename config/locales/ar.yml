@@ -1,0 +1,21 @@
+ar:
+  "Chicago": "شيكاغو"
+  hello: "Hello world"
+
+  instructions1: "نص 7863-836-312 أو سقسقة على"
+  instructions2: 'لتحديث الحالة لهذا الحاجز مثلا: "حاجز شيكاغو مغلق"'
+
+  new_checkpoint: "New Checkpoint"
+  checkpoint_currently: "حاجز"
+  checkpoints: 'حواجز'
+  open: "مفتوح"
+  closed: "مغلق"
+  open_question: "Is this checkpoint open?"
+  name: "Name"
+  yes_open: "Yes"
+  no_open: "No"
+
+  errors:
+    name:
+      unique: "Name of checkpoint must be unique"
+

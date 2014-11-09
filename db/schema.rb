@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109064634) do
+ActiveRecord::Schema.define(version: 20141109185327) do
 
   create_table "checkpoints", force: true do |t|
     t.string  "name"
     t.boolean "open"
+    t.string  "ar"
   end
 
   create_table "messages", force: true do |t|

@@ -23,7 +23,14 @@ en:
   hello: "Hello world"
 
   new_checkpoint: "New Checkpoint"
-  checkpoint: "Checkpoint"
+  checkpoint_currently: "Checkpoint is currently"
+  checkpoints: "Checkpoints"
+
+  instructions1: "Text 312-836-7863 or tweet at"
+  instructions2: 'to update the status of this checkpoint (ex. "%{checkpoint} is closed")'
+
+  open: "open"
+  closed: "closed"
   open_question: "Is this checkpoint open?"
   name: "Name"
   yes_open: "Yes"

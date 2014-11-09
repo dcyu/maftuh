@@ -4,7 +4,5 @@ class Message < ActiveRecord::Base
 
   belongs_to :checkpoint
 
-  def text
-    body
-  end
+  alias_attribute :text, :body
 end

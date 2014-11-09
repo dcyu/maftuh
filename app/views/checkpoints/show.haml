@@ -1,22 +1,21 @@
 = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
 
 %h1
-  =@checkpoint.name
-  Checkpoint is currently
+  =@checkpoint.name_locale
+  =t('checkpoint_currently')
   -if @checkpoint.open
-    %strong.green open
+    %strong.green=t('open')    
   -else
-    %strong.red closed
+    %strong.red=t('closed')
 
 %br/
 
 %h4
-  Text 312-836-7863 or tweet at 
+  =t('instructions1')
   %a{:href => "https://www.twitter.com/testmaftuh", target: "_blank"}
-    @testmaftuh 
-  to update the status of this checkpoint (ex. "#{@checkpoint.name} is closed") 
 
-%br/
+    @testmaftuh
+  =t('instructions2', checkpoint: @checkpoint.name_locale) 
 %br/
 
 .row
@@ -24,7 +23,7 @@
     .col-md-6
       #map-canvas
 
-  .col-md-6
+  .col-md-5
     -if @all_messages.count > 0
       #chart
       = render_chart(@chart, 'chart')
@@ -38,7 +37,7 @@
     %ul
       -@all_messages.each do |message|
         %li
-          #{message.text} - 
+          #{message.text} -
           -if message.user
             %a{:href => "https://www.twitter.com/#{message.user.screen_name}", target: "_blank"}
               @#{message.user.screen_name}
@@ -72,5 +71,5 @@
         title:"#{@checkpoint.name} Checkpoint"
     });
   }
+  
   google.maps.event.addDomListener(window, 'load', initialize);
-
