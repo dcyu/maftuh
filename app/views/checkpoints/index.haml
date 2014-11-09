@@ -3,13 +3,15 @@
 
 =link_to 'Create new Checkpoint', new_checkpoint_path
 
-%ul
-  -@checkpoints.each do |checkpoint|
-    %li
-      %h4
-        %a{:href => "#{checkpoint_path(checkpoint)}"}
-          -if checkpoint.open
-            =checkpoint.name + " - open"
-          -else
-            =checkpoint.name + " - closed"
+
+%table.table.table-striped
+  %tr
+    %th.span1 Checkpoint
+    %th.span1 Status
+    %th.span2 Last Updated At
+  - @checkpoints.each do | c |
+    %tr
+      %td= c.name
+      %td= (c.open == true ? "Open" : "Closed")
+      %td= Time.now
 
