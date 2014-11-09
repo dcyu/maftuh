@@ -23,7 +23,7 @@
     .col-md-6
       #map-canvas
 
-  .col-md-5
+  .col-md-6
     -if @all_messages.count > 0
       #chart
       = render_chart(@chart, 'chart')
@@ -71,5 +71,5 @@
         title:"#{@checkpoint.name} Checkpoint"
     });
   }
-  
+
   google.maps.event.addDomListener(window, 'load', initialize);
