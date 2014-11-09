@@ -3,8 +3,30 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+  gem 'quiet_assets'
+  gem 'debugger'
+  gem 'guard-livereload', :require => false
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'rspec-rails', '~> 2.14.0'
+  gem 'factory_girl_rails', '~> 4.2.1'
+end
+
+group :test do
+  gem 'faker', '~> 1.2.0'
+  gem 'capybara', '~> 2.2.0'
+  gem 'database_cleaner', '~> 1.2.0'
+  gem 'launchy', '~> 2.4.0'
+  gem 'selenium-webdriver', '~> 2.39.0'
+end
+
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -24,8 +46,6 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -44,9 +64,6 @@ gem 'figaro'
 gem "google_visualr"
 
 gem "geocoder"
-
-gem "binding_of_caller"
-gem 'better_errors'
 
 
 # Use ActiveModel has_secure_password
