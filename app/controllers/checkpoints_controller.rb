@@ -1,6 +1,5 @@
 class CheckpointsController < ApplicationController
   protect_from_forgery with: :exception
-  require 'matrix'
 
   def index
     @checkpoints = Checkpoint.all

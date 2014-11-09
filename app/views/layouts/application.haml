@@ -23,7 +23,7 @@
           %ul.nav.navbar-nav
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#{checkpoints_path}"}
-                Checkpoints
+                =t('checkpoints')
                 %span.caret
               %ul.dropdown-menu{:role => "menu"}
                 -checkpoints = Checkpoint.all
@@ -37,7 +37,10 @@
 
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a{:href => "?locale=ar"} العربي
+              -if I18n.locale == :ar
+                %a{:href => "?locale=en"} English
+              -else
+                %a{:href => "?locale=ar"} العربي
 
     - flash.each do |key, value|
       %div{:class => flash_class(key)}

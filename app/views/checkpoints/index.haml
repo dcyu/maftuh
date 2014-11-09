@@ -1,19 +1,22 @@
 %h1 Checkpoints
 %hr
 
-=link_to 'Create new Checkpoint', new_checkpoint_path
+=link_to 'Create New Checkpoint', new_checkpoint_path
 
+%hr
 
 %table.table.table-striped
-  %tr
-    %th.span1 Checkpoint
-    %th.span1 Status
-    %th.span2 Last Updated At
-  - @checkpoints.each do | c |
+  %thead
     %tr
-      %td= c.name
-      %td= (c.open == true ? "Open" : "Closed")
-      %td= Time.now
+      %th.span1 Checkpoint
+      %th.span1 Status
+      %th.span2 Last Updated At
+  %tbody
+    - @checkpoints.each do | c |
+      %tr{id: "open-#{c.open}"}
+        %td=link_to c.name, checkpoint_path(c)
+        %td= (c.open ? "Open" : "Closed")
+        %td= c.messages.last.created_at.to_formatted_s(:long) if c.messages.present?
 
 %br/
 %br/

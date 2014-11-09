@@ -1,21 +1,20 @@
 = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
 
 %h1
-  =@checkpoint.name
-  =t('checkpoint')
-  is currently
+  =@checkpoint.name_locale
+  =t('checkpoint_currently')
   -if @checkpoint.open
-    %strong.green open    
+    %strong.green=t('open')    
   -else
-    %strong.red closed
+    %strong.red=t('closed')
 
 %br/
 
 %h4
-  Text 312-836-7863 or tweet at 
+  =t('instructions1')
   %a{:href => "https://www.twitter.com/testmaftuh", target: "_blank"}
-    @testmaftuh 
-  to update the status of this checkpoint (ex. "#{@checkpoint.name} is closed") 
+    @testmaftuh
+  =t('instructions2', checkpoint: @checkpoint.name_locale) 
 
 %br/
 %br/
