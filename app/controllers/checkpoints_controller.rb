@@ -27,7 +27,7 @@ class CheckpointsController < ApplicationController
 
     if @tweets.count > 0
       @status = @tweets.first.text.include?("open")
-      @checkpoint.update(open: @status)
+      # @checkpoint.update(open: @status)
 
       @open_tweets = @tweets.select{|tweet| tweet.text.include?("open")}
       @closed_tweets = @tweets.select{|tweet| tweet.text.include?("closed")}

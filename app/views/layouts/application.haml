@@ -34,13 +34,14 @@
                 %li
                   =link_to 'All Checkpoints', checkpoints_path
 
+
+          %ul.nav.navbar-nav.navbar-right
             %li
               %a{:href => "?lang=arabic"} العربي
-          %form.navbar-form.navbar-left{:role => "search"}
-            .form-group
-              %input.form-control{:placeholder => "Search", :type => "text"}
-            %button.btn.btn-default{:type => "submit"} Submit
-        / /.navbar-collapse
-      / /.container-fluid
+
+    - flash.each do |key, value|
+      %div{:class => flash_class(key)}
+        = value
+        
     .container
       = yield

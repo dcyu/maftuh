@@ -7,6 +7,10 @@ Maftuh::Application.routes.draw do
 
   resources :checkpoints
 
+  post 'twilio/voice' => 'twilio#voice'
+
+  get 'twilio/sms' => 'twilio#sms'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
