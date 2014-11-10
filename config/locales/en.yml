@@ -27,6 +27,8 @@ en:
   checkpoints: "Checkpoints"
   all_checkpoints: "All Checkpoints"
   select_checkpoint: "Select Checkpoint"
+  checkpoint_not_found: "Apologies, your checkpoint could not be found."
+  status_update_response: "Thanks for your message. The %{name} checkpoint status has been updated"
 
   chart_title: "Status Updates"
 
@@ -44,6 +46,8 @@ en:
   name: "Name"
   yes_open: "Yes"
   no_open: "No"
+  is_open: "%{name} is open"
+  is_closed: "%{name} is closed"
 
   errors:
     name:

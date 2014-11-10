@@ -16,30 +16,41 @@ class TwilioController < ApplicationController
   end
 
   def sms
-    body = params["Body"]
     #texting "chicago" (i.e. without open or close) makes this code return the message "Thanks for your message..."
 
+    #wrote the logic here so that if they text the name of a chekpoint with a 
+    #question mark, or without mentioning closed or open, twilio returns the 
+    #status of the checkpoint. Else, twilio updates the status of the checkpoint
+    #to the prescribed value
+    body = params["Body"]
+
     is_question = body.include?(I18n.t('question_mark'))
-    is_open = body.downcase.include?("open")
+    is_open = body.downcase.include?(I18n.t('open'))
+    is_closed = body.downcase.include?(I18n.t('closed'))
 
     checkpoints = Checkpoint.select { |checkpoint| body.downcase.include?(checkpoint.name.downcase)}
     if checkpoints.empty?
-      @message = 'Apologies, your checkpoint could not be found.'
+      @message = I18n.t('checkpoint_not_found')
     else
-      if is_question
+      if is_question || ( !is_open && !is_closed )
         @message = ""
         checkpoints.each do |checkpoint|
-          @message += "#{checkpoint.name} is #{checkpoint.open ? "open" : "closed"}, "
+          if checkpoint.open
+            @message += I18n.t('is_open', name: checkpoint.name) + ", "
+          else
+            @message += I18n.t('is_closed', name: checkpoint.name) + ", "
+          end
         end
-        @message += "safe travels"
-      else
+        #removes last ", " string
+        @message = @message[0..-3]
+      elsif is_open || is_closed
         Rails.logger.debug "#{checkpoints.size} checkpoints found"
         checkpoints.each do |checkpoint|
           checkpoint.update(open: status)
           message = Message.new(body: body, checkpoint_id: checkpoint.id)
           message.save!
         end
-        @message = "Thanks for your message. The #{checkpoints.first.name} checkpoint status has been updated"
+        @message = I18n.t('status_update_response', name: checkpoints.first.name)
       end
     end
     twiml = Twilio::TwiML::Response.new { |r|  r.Message @message }
