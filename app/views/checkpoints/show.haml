@@ -44,7 +44,7 @@
 %br/
 %br/
 
-%script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}", :type => "text/javascript"}
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&language=#{params[:locale]}", :type => "text/javascript"}
 :javascript
   function initialize() {
     var geo
