@@ -17,19 +17,29 @@ class TwilioController < ApplicationController
 
   def sms
     body = params["Body"]
+
+    is_question = body.include?(I18n.t('question_mark'))
     is_open = body.downcase.include?("open")
 
     checkpoints = Checkpoint.select { |checkpoint| body.downcase.include?(checkpoint.name.downcase)}
     if checkpoints.empty?
       @message = 'Apologies, your checkpoint could not be found.'
     else
-      Rails.logger.debug "#{checkpoints.size} checkpoints found"
-      checkpoints.each do |checkpoint|
-        checkpoint.update(open: status)
-        message = Message.new(body: body, checkpoint_id: checkpoint.id)
-        message.save!
+      if is_question
+        @message = ""
+        checkpoints.each do |checkpoint|
+          @message += "#{checkpoint.name} is #{checkpoint.open ? "open" : "closed"}, "
+        end
+        @message += "safe travels"
+      else
+        Rails.logger.debug "#{checkpoints.size} checkpoints found"
+        checkpoints.each do |checkpoint|
+          checkpoint.update(open: status)
+          message = Message.new(body: body, checkpoint_id: checkpoint.id)
+          message.save!
+        end
+        @message = "Thanks for your message. The #{checkpoints.first.name} checkpoint status has been updated"
       end
-      @message = "Thanks for your message. The #{checkpoints.first.name} checkpoint status has been updated"
     end
     twiml = Twilio::TwiML::Response.new { |r|  r.Message @message }
     render text: twiml.text
