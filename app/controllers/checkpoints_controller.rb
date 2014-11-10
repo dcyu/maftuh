@@ -35,8 +35,8 @@ class CheckpointsController < ApplicationController
 
       # Add Column Headers
       data_table.new_column('string', 'Hour' )
-      data_table.new_column('number', 'Open')
-      data_table.new_column('number', 'Closed')
+      data_table.new_column('number', I18n.t('open'))
+      data_table.new_column('number', I18n.t('closed'))
 
       # Add Rows and Values
       grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.
@@ -55,11 +55,11 @@ class CheckpointsController < ApplicationController
         end
 
         data_table.add_rows([[
-          "#{messages.first} hours ago", open_messages.count, closed_messages.count
+          I18n.t('hours_ago', number: messages.first), open_messages.count, closed_messages.count
         ]]
         )
       end
-      option = { width: 400, height: 400, title: 'Recent Status Updates', colors: ['#009900', '#990000'] }
+      option = { width: 400, height: 400, title: I18n.t('chart_title'), colors: ['#009900', '#990000'] }
       @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
     end
   end

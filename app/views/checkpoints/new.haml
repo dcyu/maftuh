@@ -1,29 +1,32 @@
-= form_for @checkpoint do |f|
-  - if @checkpoint.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@checkpoint.errors.count, "error")} prohibited this checkpoint from being saved:"
-      %ul
-        - @checkpoint.errors.full_messages.each do |msg|
-          %li= msg
+.row
+  .col-md-6
+    .panel.panel-info
+      .panel-heading
+        = t('new_checkpoint')
+      .panel-body
+        = form_for @checkpoint do |f|
+          - if @checkpoint.errors.any?
+            #error_explanation
+              %h2= "#{pluralize(@checkpoint.errors.count, "error")} prohibited this checkpoint from being saved:"
+              %ul
+                - @checkpoint.errors.full_messages.each do |msg|
+                  %li= msg
 
-  %form
-    %fieldset.text-center
-      %legend
-        = I18n.t('new_checkpoint')
-     
-      .name
-        = f.label :name, class: "name-label"
-        = f.text_field :name, placeholder: "Name..."
-      .open.checkbox.in-line
-        %span.open-label
-          = I18n.t('open_question')
-        = f.label :open, I18n.t('yes_open'), class: "radio-label"
-        = f.radio_button :open, "true"
+          .form-group
+            = f.label :name
+            = f.text_field :name, class: "form-control", placeholder: "..."
 
+          .form-group
+            %label
+              = t('open_question')
 
-        = f.label :open, I18n.t('no_open'), class: "radio-label"
-        = f.radio_button :open, "false"
+            .radio
+              %label
+                = f.radio_button :open, "true"
+                = t('yes_open')
+            .radio
+              %label
+                = f.radio_button :open, "false"
+                = t('no_open')
 
-
-      .btn.left-btn
-        = f.submit 'Save'
+          = f.submit 'Create', class: " btn btn-default"

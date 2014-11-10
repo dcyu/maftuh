@@ -26,6 +26,12 @@ en:
   checkpoint_currently: "Checkpoint is currently"
   checkpoints: "Checkpoints"
 
+  chart_title: "Status Updates"
+
+  hours_ago: "%{number} hours ago"
+
+  recent_updates: "Recent Updates"
+
   instructions1: "Text 312-836-7863 or tweet at"
   instructions2: 'to update the status of this checkpoint (ex. "%{checkpoint} is closed")'
 

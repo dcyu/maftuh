@@ -2,8 +2,15 @@ ar:
   "Chicago": "شيكاغو"
   hello: "Hello world"
 
-  instructions1: "نص 7863-836-312 أو سقسقة على"
-  instructions2: 'لتحديث الحالة لهذا الحاجز مثلا: "حاجز شيكاغو مغلق"'
+  instructions1: 'ﻟﺘﺤﺪﻳﺚ اﻟﺤﺎﻟﺔ ﻟﻬﺬا اﻟﺤﺎﺟﺰ ﻣﺜﻼ: ﺣﺎﺟﺰ ﺷﻴﻜﺎﻏﻮ ﻣﻐﻠﻖ '
+  instructions2: 'ﻧﺺ 7863-836-312 ﺃﻭ ﺳﻘﺴﻘﺔ ﻋﻠﻰ'
+
+  chart_title: "التحديثات"
+
+  hours_ago: "منذ %{number} ساعات"
+
+  recent_updates: "تحديثات مؤخرا"
+
 
   new_checkpoint: "New Checkpoint"
   checkpoint_currently: "حاجز"
