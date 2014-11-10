@@ -28,7 +28,7 @@ en:
 
   chart_title: "Status Updates"
 
-  hours_ago: "%{number} hours ago"
+  hours_ago: "%{number} hrs ago"
 
   recent_updates: "Recent Updates"
 
