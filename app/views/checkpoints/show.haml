@@ -34,13 +34,12 @@
               #{message.created_at.to_formatted_s(:long)}
 
 .row
-  .col-md-8
-    #map-canvas
-
   .col-md-4
     -if @all_messages.count > 0
       #chart
       = render_chart(@chart, 'chart')
+  .col-md-8
+    #map-canvas
 
 %br/
 %br/
