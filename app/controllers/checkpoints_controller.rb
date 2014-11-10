@@ -60,7 +60,7 @@ class CheckpointsController < ApplicationController
         ]]
         )
       end
-      option = {fontSize: 15, width: 530, height: 530, title: 'Recent Status Updates', colors: ['#009900', '#990000'], hAxis: {viewWindowMode: 'pretty'} }
+      option = {fontSize: 15, width: 499, height: 530, title: 'Recent Status Updates', colors: ['#009900', '#990000'], hAxis: {viewWindowMode: 'pretty'} }
       @chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
 
     end
