@@ -6,7 +6,7 @@ gem 'rails', '4.0.2'
 group :development, :test do
   gem 'sqlite3'
   gem 'quiet_assets'
-  gem 'debugger'
+  gem 'byebug'
   gem 'guard-livereload', :require => false
   gem 'better_errors'
   gem 'binding_of_caller'
