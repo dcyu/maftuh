@@ -17,6 +17,7 @@ class TwilioController < ApplicationController
 
   def sms
     body = params["Body"]
+    #texting "chicago" (i.e. without open or close) makes this code return the message "Thanks for your message..."
 
     is_question = body.include?(I18n.t('question_mark'))
     is_open = body.downcase.include?("open")
