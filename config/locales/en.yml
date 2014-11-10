@@ -46,8 +46,8 @@ en:
   name: "Name"
   yes_open: "Yes"
   no_open: "No"
-  is_open: "%{name} is open"
-  is_closed: "%{name} is closed"
+  is_open: "%{name} is open, "
+  is_closed: "%{name} is closed, "
 
   errors:
     name:

@@ -36,9 +36,9 @@ class TwilioController < ApplicationController
         @message = ""
         checkpoints.each do |checkpoint|
           if checkpoint.open
-            @message += I18n.t('is_open', name: checkpoint.name) + ", "
+            @message += I18n.t('is_open', name: checkpoint.name)
           else
-            @message += I18n.t('is_closed', name: checkpoint.name) + ", "
+            @message += I18n.t('is_closed', name: checkpoint.name)
           end
         end
         #removes last ", " string
