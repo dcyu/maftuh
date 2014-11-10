@@ -24,8 +24,8 @@ table.dataTable thead td {
   border-bottom: 1px solid #6F6F6F;
 }
 
-table.dataTable thead th.checkpoint-left{
-  padding-left: 0;
+table.dataTable thead th{
+  padding-left: 25%;
 }
 
 table.dataTable thead th:active,
@@ -314,8 +314,8 @@ table.dataTable td {
 }
 
 .dataTables_wrapper .dataTables_filter {
-  float: left;
-  text-align: left;
+  float: right;
+  text-align: right;
   margin-bottom: 1%;
 }
 .dataTables_wrapper .dataTables_filter input {

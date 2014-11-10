@@ -30,12 +30,14 @@ en:
   select_checkpoint: "Select Checkpoint"
   checkpoint_not_found: "Apologies, your checkpoint could not be found."
   status_update_response: "Thanks for your message. The %{name} checkpoint status has been updated"
+  create_new_checkpoint: "Create New Checkpoint"
 
   chart_title: "Status Updates"
 
   hours_ago: "%{number} hrs ago"
 
   recent_updates: "Recent Updates"
+  recent_reports: "Recent Reports"
 
   instructions1: "Text 312-836-7863 or tweet at"
   instructions2: 'to update the status of this checkpoint (ex. "%{checkpoint} is closed")'

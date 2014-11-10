@@ -13,7 +13,8 @@
   =t('instructions2', checkpoint: @checkpoint.name_locale)
 
 %br/
-%h5 Recent Reports:
+%h5
+  =I18n.t('recent_reports')
 .table-responsive
   %table.table.table-striped
     %tbody
@@ -34,10 +35,11 @@
   .col-md-7
     #map-canvas{:style => "width: 650px; height: 400px"}
 
-  .col-md-6
-    -if @all_messages.count > 0
-      #chart
-      = render_chart(@chart, 'chart')
+ .row
+   .col-md-5
+     -if @all_messages.count > 0
+       #chart
+       = render_chart(@chart, 'chart')
 
 %br/
 %br/
@@ -72,7 +74,6 @@
 :javascript
   function initialize() {
     var geo
-
     var mapOptions = {
       center: { lat: #{@geo.first}, lng: #{@geo.last}},
       zoom: 9,
@@ -86,5 +87,4 @@
         title:"#{@checkpoint.name} Checkpoint"
     });
   }
-
   google.maps.event.addDomListener(window, 'load', initialize);
