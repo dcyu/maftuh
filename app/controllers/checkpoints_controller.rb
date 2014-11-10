@@ -39,7 +39,7 @@ class CheckpointsController < ApplicationController
       data_table.new_column('number', I18n.t('closed'))
 
       # Add Rows and Values
-      grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.sort_by { |time| time }.reverse
+      grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.sort_by { |time| time }
 
       grouped_messages.each do |messages|
         open_messages = messages.last.select{|message| message.text.include?('open')}
@@ -60,7 +60,7 @@ class CheckpointsController < ApplicationController
         ]]
         )
       end
-      option = { width: 450, height: 400, title: I18n.t('chart_title'), colors: ['#009900', '#990000'], fontName: "Open Sans", hAxis: {viewWindowMode: 'pretty'} }
+      option = {fontSize: 15, width: 350, height: 550, title: I18n.t('chart_title'), colors: ['#009900', '#990000'],legend: {position: 'top'} }
       @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
     end
   end
