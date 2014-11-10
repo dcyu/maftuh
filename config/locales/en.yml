@@ -24,17 +24,20 @@ en:
 
   new_checkpoint: "New Checkpoint"
   checkpoint_currently: "%{name} Checkpoint is currently"
+  checkpoint: "Checkpoint"
   checkpoints: "Checkpoints"
   all_checkpoints: "All Checkpoints"
   select_checkpoint: "Select Checkpoint"
   checkpoint_not_found: "Apologies, your checkpoint could not be found."
   status_update_response: "Thanks for your message. The %{name} checkpoint status has been updated"
+  create_new_checkpoint: "Create New Checkpoint"
 
   chart_title: "Status Updates"
 
   hours_ago: "%{number} hrs ago"
 
   recent_updates: "Recent Updates"
+  recent_reports: "Recent Reports"
 
   instructions1: "Text 312-836-7863 or tweet at"
   instructions2: 'to update the status of this checkpoint (ex. "%{checkpoint} is closed")'
@@ -44,10 +47,12 @@ en:
   question_mark: "?"
   open_question: "Is this checkpoint open?"
   name: "Name"
+  status: "Status"
   yes_open: "Yes"
   no_open: "No"
   is_open: "%{name} is open"
   is_closed: "%{name} is closed"
+  last_updated_at: "Last Updated At"
 
   errors:
     name:
