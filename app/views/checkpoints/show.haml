@@ -30,20 +30,24 @@
 %br/
 
 .row
-  .col-md-6
+  .col-md-12
     %h3=t('recent_updates')
-    %ul
+    %hr/
+
+    %table.table.table-striped    
       -@all_messages.each do |message|
-        %li
-          #{message.text} -
-          -if message.user
-            %a{:href => "https://www.twitter.com/#{message.user.screen_name}", target: "_blank"}
-              @#{message.user.screen_name}
-          -else
-            SMS
-          \-
-          %strong
-            #{message.created_at.to_formatted_s(:long)}
+        %tr
+          %td.message_text
+            =message.text
+          %td
+            -if message.user
+              %a{:href => "https://www.twitter.com/#{message.user.screen_name}", target: "_blank"}
+                @#{message.user.screen_name}
+            -else
+              SMS
+          %td
+            %strong
+              =message.created_at.to_formatted_s(:long)
 
 
 
