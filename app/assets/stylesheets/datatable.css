@@ -293,6 +293,7 @@ table.dataTable tbody td.dt-body-nowrap {
 table.dataTable,
 table.dataTable th,
 table.dataTable td {
+  text-align: right;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
