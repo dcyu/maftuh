@@ -78,8 +78,8 @@ class CheckpointsController < ApplicationController
   end
 
   def destroy
-    @checkpoint = Checkpoint.find(params[:id])
-    @checkpoint.destroy
+    checkpoint = Checkpoint.find(params[:id])
+    checkpoint.destroy
     redirect_to checkpoints_path
   end
 
