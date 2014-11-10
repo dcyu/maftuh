@@ -23,8 +23,10 @@ en:
   hello: "Hello world"
 
   new_checkpoint: "New Checkpoint"
-  checkpoint_currently: "Checkpoint is currently"
+  checkpoint_currently: "%{name} Checkpoint is currently"
   checkpoints: "Checkpoints"
+  all_checkpoints: "All Checkpoints"
+  select_checkpoint: "Select Checkpoint"
 
   chart_title: "Status Updates"
 
