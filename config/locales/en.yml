@@ -24,6 +24,7 @@ en:
 
   new_checkpoint: "New Checkpoint"
   checkpoint_currently: "%{name} Checkpoint is currently"
+  checkpoint: "Checkpoint"
   checkpoints: "Checkpoints"
   all_checkpoints: "All Checkpoints"
   select_checkpoint: "Select Checkpoint"
@@ -44,10 +45,12 @@ en:
   question_mark: "?"
   open_question: "Is this checkpoint open?"
   name: "Name"
+  status: "Status"
   yes_open: "Yes"
   no_open: "No"
   is_open: "%{name} is open"
   is_closed: "%{name} is closed"
+  last_updated_at: "Last Updated At"
 
   errors:
     name:
