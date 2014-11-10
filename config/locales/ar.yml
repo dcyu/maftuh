@@ -13,8 +13,10 @@ ar:
 
 
   new_checkpoint: "New Checkpoint"
-  checkpoint_currently: "حاجز"
+  checkpoint_currently: "حاجز %{name}"
   checkpoints: 'حواجز'
+  all_checkpoints: 'كل حواجز'
+  select_checkpoint: 'اختر حاجز'
   open: "مفتوح"
   closed: "مغلق"
   open_question: "Is this checkpoint open?"
