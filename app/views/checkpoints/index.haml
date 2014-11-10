@@ -1,11 +1,12 @@
-%h1 Checkpoints
+%h1 
+  =I18n.t('checkpoints').capitalize
 %hr
 
 .table-responsive
   %table.table.table-striped#datatable
     %thead
       %tr
-        %th.checkpoint-left.span1
+        %th.checkpoint-right.span1
           = I18n.t('checkpoint')
         %th.span1 
           = I18n.t('status')
@@ -23,7 +24,7 @@
 
 %br/
 
-=link_to 'Create New Checkpoint', new_checkpoint_path
+=link_to I18n.t('create_new_checkpoint'), new_checkpoint_path
 
 %br/
 %br/

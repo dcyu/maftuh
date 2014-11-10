@@ -11,7 +11,7 @@
  *= require_self
  *= require_tree .
  */
-@import 'datatable.css';
+/*@import 'datatable.css';
 
 .name{
   margin: 1% 0;
@@ -53,5 +53,5 @@ table {
   margin-bottom: 0;
   border-bottom: 1px solid #D6D6D6;
   overflow: auto;
-}
+}*/
 
