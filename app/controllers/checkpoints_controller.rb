@@ -39,8 +39,7 @@ class CheckpointsController < ApplicationController
       data_table.new_column('number', 'Closed')
 
       # Add Rows and Values
-      grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.
-                                         sort_by { |time| time }
+      grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.sort_by { |time| time }.reverse
 
       grouped_messages.each do |messages|
         open_messages = messages.last.select{|message| message.text.include?('open')}
@@ -54,13 +53,15 @@ class CheckpointsController < ApplicationController
           end
         end
 
+        label = messages.first.to_i == 1 ? "#{messages.first} hour ago" : "#{messages.first} hours ago"
+
         data_table.add_rows([[
-          "#{messages.first} hours ago", open_messages.count, closed_messages.count
+          label, open_messages.count, closed_messages.count
         ]]
         )
       end
-      option = { width: 400, height: 400, title: 'Recent Status Updates', colors: ['#009900', '#990000'] }
-      @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
+      option = {fontSize: 15, width: 530, height: 530, title: 'Recent Status Updates', colors: ['#009900', '#990000'], hAxis: {viewWindowMode: 'pretty'} }
+      @chart = GoogleVisualr::Interactive::ColumnChart.new(data_table, option)
     end
   end
 
