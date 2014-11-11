@@ -49,14 +49,10 @@ class CheckpointsController < ApplicationController
       data_table.new_column('number', I18n.t('closed'))
 
       # Add Rows and Values
-<<<<<<< HEAD
       grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.
                                          sort_by { |time| time }
       
       @grouped_messages = grouped_messages
-=======
-      grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.sort_by { |time| time }
->>>>>>> bba65362e8de073e2030a9683ec13419c20abce4
 
       grouped_messages.each do |messages|
         open_messages = messages.last.select{|message| message.open?}
