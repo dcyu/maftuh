@@ -9,9 +9,11 @@ Message.create(checkpoint_id: c2.id, body: "New York is open")
 
 en = File.readlines('checkpoints.txt')
 ar = File.readlines('checkpoints_ar.txt')
-
 combined = en.zip ar
 
 combined.each do |line|
-  Checkpoint.create name: line.first, ar: line.last, open: false
+  c = Checkpoint.create name: line.first.chomp, ar: line.last.chomp, open: false
+  Message.create(checkpoint_id: c.id, body: "#{line.first} is closed")
+  Message.create(checkpoint_id: c.id, body: "#{line.first} is open")
+  Message.create(checkpoint_id: c.id, body: "#{line.first} is closed")
 end
