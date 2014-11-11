@@ -1,22 +1,29 @@
-%h1 Checkpoints
+%h1 
+  =I18n.t('checkpoints').capitalize
 %hr
 
-=link_to 'Create New Checkpoint', new_checkpoint_path
-
-%hr
-
-%table.table.table-striped
-  %thead
-    %tr
-      %th.span1 Checkpoint
-      %th.span1 Status
-      %th.span2 Last Updated At
-  %tbody
-    - @checkpoints.each do | c |
-      %tr{id: "open-#{c.open}"}
-        %td=link_to c.name, checkpoint_path(c)
-        %td= (c.open ? "Open" : "Closed")
-        %td= c.messages.last.created_at.to_formatted_s(:long) if c.messages.present?
+.table-responsive
+  %table.table.table-striped#datatable
+    %thead
+      %tr
+        %th.checkpoint-right.span1
+          = I18n.t('checkpoint')
+        %th.span1 
+          = I18n.t('status')
+        %th.span2
+          = I18n.t('last_updated_at')
+    %tbody
+      - @checkpoints.order(name: :asc).each do | c |
+        %tr
+          %td=link_to c.name, checkpoint_path(c)
+          -if c.open
+            %td{class: 'open-true bold'}= I18n.t('open').capitalize
+          -else
+            %td{class: 'open-false bold'}= I18n.t('closed').capitalize
+          %td= c.messages.last.created_at.to_formatted_s(:long) if c.messages.present?
 
 %br/
+
+=link_to I18n.t('create_new_checkpoint'), new_checkpoint_path
+
 %br/

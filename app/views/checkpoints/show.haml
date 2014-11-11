@@ -6,77 +6,58 @@
     %strong.green=t('open')    
   -else
     %strong.red=t('closed')
-
-%br/
-
 %h4
   =t('instructions1')
   %a{:href => "https://www.twitter.com/testmaftuh", target: "_blank"}
+
     @testmaftuh
   =t('instructions2', checkpoint: @checkpoint.name_locale) 
-%br/
-
-.row
-  .col-md-7
-    #map-canvas{:style => "width: 650px; height: 400px"}
-
-  .col-md-5
-    -if @all_messages.count > 0
-      #chart
-      = render_chart(@chart, 'chart')
 
 %br/
-%br/
-
-.row
-  .col-md-12
-    %h3=t('recent_updates')
-    %hr/
-
-    %table.table.table-striped    
-      -@all_messages.each do |message|
-        %tr
-          %td.message_text
-            =message.text
+%h5 
+  =I18n.t('recent_reports')
+.table-responsive
+  %table.table.table-striped
+    %tbody
+      %tr
+        -@all_messages.reverse.each do |message|
           %td
+            #{message.text} -
             -if message.user
               %a{:href => "https://www.twitter.com/#{message.user.screen_name}", target: "_blank"}
                 @#{message.user.screen_name}
             -else
               SMS
-          %td
+            \-
             %strong
-              =message.created_at.to_formatted_s(:long)
+              #{message.created_at.to_formatted_s(:long)}
 
-
-
+.row
+  .col-md-4
+    -if @all_messages.count > 0
+      #chart
+      = render_chart(@chart, 'chart')
+  .col-md-8
+    #map-canvas
 
 %br/
 %br/
 
-
-=link_to 'Edit', edit_checkpoint_path(@checkpoint)
-\|
-
-=link_to 'Delete',  { action: :destroy, id: @checkpoint.id }, method: :delete, data: { confirm: 'Are you sure?' }
-
--if @geo
-  %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&language=#{params[:locale]}", :type => "text/javascript"}
-  :javascript
-    function initialize() {
-      var geo
-
-      var mapOptions = {
-        center: { lat: #{@geo.first}, lng: #{@geo.last}},
-        zoom: 9,
-        mapTypeId: google.maps.MapTypeId.TERRAIN
-      };
-      var map = new google.maps.Map(document.getElementById('map-canvas'),
-          mapOptions);
-      var marker = new google.maps.Marker({
-          position: {lat: #{@geo.first}, lng: #{@geo.last}},
-          map: map,
-          title:"Checkpoint"
-      });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&language=#{params[:locale]}", :type => "text/javascript"}
+:javascript
+  function initialize() {
+    var geo
+    var mapOptions = {
+      center: { lat: #{@geo.first}, lng: #{@geo.last}},
+      zoom: 9,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+    var map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+    var marker = new google.maps.Marker({
+        position: {lat: #{@geo.first}, lng: #{@geo.last}},
+        map: map,
+        title:"#{@checkpoint.name} Checkpoint"
+    });
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
