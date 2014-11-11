@@ -40,8 +40,8 @@
             =message.text
           %td
             -if message.user
-              %a{:href => "https://www.twitter.com/#{message.user.screen_name}", target: "_blank"}
-                @#{message.user.screen_name}
+              %a{:href => "https://www.twitter.com/#{message.user}", target: "_blank"}
+                @#{message.user}
             -else
               SMS
           %td

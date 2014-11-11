@@ -26,8 +26,18 @@ class CheckpointsController < ApplicationController
     end
     @geo = Geocoder.coordinates(@checkpoint.name)
 
-    @tweets = $twitter.search("to:testmaftuh #{@checkpoint.name}", result_type: "recent")
-    @all_messages = (@tweets.to_a + @checkpoint.messages).sort_by(&:created_at).reverse
+    @tweets = $twitter.search("to:testmaftuh #{@checkpoint.name}", result_type: "recent").to_a + $twitter.search("to:testmaftuh #{@checkpoint.ar}", result_type: "recent").to_a
+
+    @tweets.each do |tweet|
+      m = Message.new
+      m.body = tweet.text
+      m.user = tweet.user.screen_name
+      m.checkpoint_id = @checkpoint.id
+      m.tweet_id = tweet.id
+      m.save
+    end
+
+    @all_messages = @checkpoint.messages.sort_by(&:created_at).reverse
 
     if @all_messages.count > 0
 
@@ -41,10 +51,13 @@ class CheckpointsController < ApplicationController
       # Add Rows and Values
       grouped_messages = (@all_messages).group_by { |m| ((Time.now - m.created_at) / 3600).round }.
                                          sort_by { |time| time }
+      
+      @grouped_messages = grouped_messages
 
       grouped_messages.each do |messages|
-        open_messages = messages.last.select{|message| message.text.include?('open')}
-        closed_messages = messages.last.select{|message| message.text.include?('closed')}
+        open_messages = messages.last.select{|message| message.open?}
+
+        closed_messages = messages.last.select{|message| message.closed?}
 
         if grouped_messages.first == messages
           if open_messages.count > closed_messages.count

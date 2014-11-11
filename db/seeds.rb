@@ -1,6 +1,6 @@
 c1 = Checkpoint.create(name: "Chicago", open: true)
 Message.create(checkpoint_id: c1.id, body: "Chicago is open")
-Message.create(checkpoint_id: c1.id, body: "Chicago is closed")
+Message.create(checkpoint_id: c1.id, body: "Chicago is open")
 Message.create(checkpoint_id: c1.id, body: "Chicago is open")
 c2 = Checkpoint.create(name: "New York", open: false)
 Message.create(checkpoint_id: c2.id, body: "New York is false")
