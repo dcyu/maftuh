@@ -12,24 +12,21 @@
   =t('instructions2', checkpoint: @checkpoint.name_locale) 
 
 .row
-  .col-md-7
+  .col-md-6
     #map-canvas{:style => "width: 650px; height: 400px"}
 
   .row
-    .col-md-5
+    .col-md-6
       -if @all_messages.count > 0
         #chart= render_chart(@chart, 'chart')
-
-%br/
-%br/
 
 %h5 
   =I18n.t('recent_reports')
 .table-responsive
   %table.table.table-striped
     %tbody
-      %tr
-        -@all_messages.reverse.each do |message|
+      -@all_messages.reverse[0..7].each do |message|
+        %tr
           %td
             #{message.text} -
             -if message.user
@@ -40,9 +37,6 @@
             \-
             %strong
               #{message.created_at.to_formatted_s(:long)}
-
-%br/
-%br/
 
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&language=#{params[:locale]}", :type => "text/javascript"}
 :javascript

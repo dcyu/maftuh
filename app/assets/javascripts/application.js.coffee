@@ -23,4 +23,7 @@ jQuery ->
     "dom": 'T<"clear">lfrtip',
     "paging": false,
     "info":false,
+    "tableTools": {
+        "aButtons": []
+    }
   )

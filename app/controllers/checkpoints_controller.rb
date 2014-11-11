@@ -59,7 +59,7 @@ class CheckpointsController < ApplicationController
         ]]
         )
       end
-      option = {fontSize: 15, width: 350, height: 550, title: I18n.t('chart_title'), colors: ['#009900', '#990000'],legend: {position: 'top'} }
+      option = {fontSize: 15, width: 430, height: 550, title: I18n.t('chart_title'), colors: ['#009900', '#990000'],legend: {position: 'top'} }
       @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
 
     end
