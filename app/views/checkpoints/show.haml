@@ -1,8 +1,7 @@
 = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
 
 %h1
-  =@checkpoint.name_locale
-  =t('checkpoint_currently')
+  =t('checkpoint_currently', name: @checkpoint.name_locale)
   -if @checkpoint.open
     %strong.green=t('open')    
   -else

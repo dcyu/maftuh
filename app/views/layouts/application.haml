@@ -23,9 +23,12 @@
         / Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
+            %li
+              %a{:href => "#{checkpoints_path}"}
+                =t('all_checkpoints')
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#{checkpoints_path}"}
-                =t('checkpoints')
+                =t('select_checkpoint')
                 %span.caret
               %ul.dropdown-menu{:role => "menu"}
                 -checkpoints = Checkpoint.all
