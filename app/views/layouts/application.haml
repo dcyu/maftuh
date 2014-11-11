@@ -4,7 +4,10 @@
     %title Maftuh
     = stylesheet_link_tag    "application", media: "all"
     -if params[:locale] == "ar"
-      = stylesheet_link_tag    "rtl", media: "all"
+      :css
+        body {
+          text-align: right;
+        }
     = javascript_include_tag "application"
     %script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"}
     %script{src: "https://www.google.com/jsapi"}
