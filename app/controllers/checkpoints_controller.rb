@@ -33,7 +33,7 @@ class CheckpointsController < ApplicationController
       m.body = tweet.text
       m.user = tweet.user.screen_name
       m.checkpoint_id = @checkpoint.id
-      m.tweet_id = tweet.id
+      m.tweet_id = tweet.id_str
       m.save
     end
 
