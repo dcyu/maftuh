@@ -15,6 +15,7 @@
 //= require datatable.min
 //= require datatable-bootstrap.min
 //= require datatable-tabletools.min
+//= require stuff
 
 jQuery ->
 

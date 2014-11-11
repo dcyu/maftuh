@@ -67,13 +67,13 @@ class CheckpointsController < ApplicationController
           end
         end
 
-        label = messages.first.to_i == 1 ? I18n.t('hours_ago', number: messages.first) : I18n.t('hour_ago', number: messages.first)
+        label = messages.first.to_i == 1 ? I18n.t('hour_ago', number: messages.first) : I18n.t('hours_ago', number: messages.first)
         data_table.add_rows([[
           label, open_messages.count, closed_messages.count
         ]]
         )
       end
-      option = {fontSize: 15, width: 430, height: 550, title: I18n.t('chart_title'), colors: ['#009900', '#990000'],legend: {position: 'top'} }
+      option = {width: 430, height: 550, title: I18n.t('chart_title'), colors: ['#009900', '#990000'],legend: {position: 'top'}, fontName: "Open Sans" }
       @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
 
     end

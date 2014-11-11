@@ -7,15 +7,18 @@ ar:
   chart_title: "التحديثات"
 
   hours_ago: "منذ %{number} ساعات"
+  hour_ago: 'منذ ساعة'
 
   recent_updates: "تحديثات مؤخرا"
 
-
+  checkpoint: 'حاجز'
   new_checkpoint: "New Checkpoint"
   checkpoint_currently: "حاجز %{name}"
   checkpoints: 'حواجز'
   all_checkpoints: 'كل حواجز'
   select_checkpoint: 'اختر حاجز'
+  status: 'وضع'
+  last_updated_at: 'آخر تحديث'
   open: "مفتوح"
   closed: "مغلق"
   open_question: "Is this checkpoint open?"

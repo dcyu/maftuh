@@ -15,7 +15,7 @@
     %tbody
       - @checkpoints.order(name: :asc).each do | c |
         %tr
-          %td=link_to c.name, checkpoint_path(c)
+          %td=link_to c.name_locale, checkpoint_path(c)
           -if c.open
             %td{class: 'open-true bold'}= I18n.t('open').capitalize
           -else

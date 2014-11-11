@@ -20,23 +20,26 @@
       -if @all_messages.count > 0
         #chart= render_chart(@chart, 'chart')
 
-%h5 
-  =I18n.t('recent_reports')
-.table-responsive
-  %table.table.table-striped
-    %tbody
-      -@all_messages.reverse[0..7].each do |message|
-        %tr
-          %td
-            #{message.text} -
-            -if message.user
-              %a{:href => "https://www.twitter.com/#{message.user}", target: "_blank"}
-                @#{message.user}
-            -else
-              SMS
-            \-
-            %strong
-              #{message.created_at.to_formatted_s(:long)}
+.row
+  .col-md-12
+    %h3
+      =I18n.t('recent_updates')
+    %hr/
+    .table-responsive
+      %table.table.table-striped
+        -@all_messages.each do |message|
+          %tr
+            %td.message_text
+              =message.text
+            %td
+              -if message.user
+                %a{:href => "https://www.twitter.com/#{message.user}", target: "_blank"}
+                  @#{message.user}
+              -else
+                SMS
+            %td
+              %strong
+                =message.created_at.to_formatted_s(:long)
 
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&language=#{params[:locale]}", :type => "text/javascript"}
 :javascript
