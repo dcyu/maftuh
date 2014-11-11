@@ -1,19 +1,28 @@
-= javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false"
-
 %h1
   =t('checkpoint_currently', name: @checkpoint.name_locale)
   -if @checkpoint.open
-    %strong.green=t('open')    
+    %strong.green=t('open')
   -else
     %strong.red=t('closed')
 %h4
   =t('instructions1')
   %a{:href => "https://www.twitter.com/testmaftuh", target: "_blank"}
-
     @testmaftuh
+
   =t('instructions2', checkpoint: @checkpoint.name_locale) 
 
+.row
+  .col-md-7
+    #map-canvas{:style => "width: 650px; height: 400px"}
+
+  .row
+    .col-md-5
+      -if @all_messages.count > 0
+        #chart= render_chart(@chart, 'chart')
+
 %br/
+%br/
+
 %h5 
   =I18n.t('recent_reports')
 .table-responsive
@@ -31,14 +40,6 @@
             \-
             %strong
               #{message.created_at.to_formatted_s(:long)}
-
-.row
-  .col-md-4
-    -if @all_messages.count > 0
-      #chart
-      = render_chart(@chart, 'chart')
-  .col-md-8
-    #map-canvas
 
 %br/
 %br/

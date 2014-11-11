@@ -54,13 +54,12 @@ class CheckpointsController < ApplicationController
         end
 
         label = messages.first.to_i == 1 ? I18n.t('hours_ago', number: messages.first) : I18n.t('hour_ago', number: messages.first)
-        
         data_table.add_rows([[
           label, open_messages.count, closed_messages.count
         ]]
         )
       end
-      option = {fontSize: 15, width: 350, height: 550, title: 'Recent Status Updates', colors: ['#009900', '#990000'],legend: {position: 'top'} }
+      option = {fontSize: 15, width: 350, height: 550, title: I18n.t('chart_title'), colors: ['#009900', '#990000'],legend: {position: 'top'} }
       @chart = GoogleVisualr::Interactive::BarChart.new(data_table, option)
 
     end
@@ -80,8 +79,8 @@ class CheckpointsController < ApplicationController
   end
 
   def destroy
-    @checkpoint = Checkpoint.find(params[:id])
-    @checkpoint.destroy
+    checkpoint = Checkpoint.find(params[:id])
+    checkpoint.destroy
     redirect_to checkpoints_path
   end
 
