@@ -1,5 +1,5 @@
 class ChangeTweetIdToString < ActiveRecord::Migration
   def change
-    add_column :messages, :tweet_id, :string
+    change_column :messages, :tweet_id, :string
   end
 end
