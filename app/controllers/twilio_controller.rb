@@ -25,7 +25,7 @@ class TwilioController < ApplicationController
     checkpoints = checkpoints_ar + checkpoints_en
 
     if checkpoints.empty?
-      #replace this with arabic later
+      #replace this with arabic later:
       @message = I18n.t('checkpoint_not_found')
     else
       Rails.logger.debug "#{checkpoints.size} checkpoints found"
@@ -35,25 +35,23 @@ class TwilioController < ApplicationController
 
       if is_question || ( !is_open && !is_closed )
         @message = ""
-        checkpoints.each do |checkpoint|
-          if checkpoints_ar.present?
+        if checkpoints_ar.present?
+          checkpoints.each do |checkpoint|
             if checkpoint.open
               @message += " ،مفتوح " + checkpoint.ar 
             else
               @message += " ،مغلق " + checkpoint.ar
             end
-          else
+          end
+          @message = @message[2..-1]
+        else
+          checkpoints.each do |checkpoint|
             if checkpoint.open
               @message += checkpoint.name + " is open, "
             else
               @message += checkpoint.name + " is closed, "
             end
           end
-        end
-        #removes ", " substring
-        if checkpoints_ar.present?
-          @message = @message[2..-1]
-        else
           @message = @message[0..-3]
         end
       elsif is_open || is_closed
