@@ -26,5 +26,8 @@ jQuery ->
     "info":false,
     "tableTools": {
         "aButtons": []
+    },
+    "language": {
+      "search": "تفتيش:"
     }
   )

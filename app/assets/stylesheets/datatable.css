@@ -312,11 +312,11 @@ table.dataTable td {
 .dataTables_filter label{
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
+  float: right;
 }
 
 .dataTables_wrapper .dataTables_filter {
-  float: right;
-  text-align: right;
+  text-align: left;
   margin-bottom: 1%;
 }
 .dataTables_wrapper .dataTables_filter input {
