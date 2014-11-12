@@ -16,15 +16,16 @@ class TwilioController < ApplicationController
     #to the prescribed value
     body = params["Body"]
 
-    is_question = body.include?(I18n.t('question_mark'))
-    is_open = body.downcase.include?(I18n.t('open'))
-    is_closed = body.downcase.include?(I18n.t('closed'))
+    is_question = body.include?("?") || body.include?("؟")
+    is_open = body.downcase.include?("open") || body.downcase.include?("مفتوح")
+    is_closed = body.downcase.include?("closed") || body.downcase.include?("مغلق")
 
     checkpoints_en = Checkpoint.select { |checkpoint| body.downcase.include?(checkpoint.name.downcase)}
     checkpoints_ar = Checkpoint.select { |checkpoint| body.include?(checkpoint.ar) if checkpoint.ar} 
     checkpoints = checkpoints_ar + checkpoints_en
 
     if checkpoints.empty?
+      #replace this with arabic later
       @message = I18n.t('checkpoint_not_found')
     else
       Rails.logger.debug "#{checkpoints.size} checkpoints found"
@@ -59,14 +60,14 @@ class TwilioController < ApplicationController
         checkpoint = checkpoints.first
         #right now this query includes messages that do not report open or closed
         recent_messages = Message.where(checkpoint_id: checkpoint.id).limit(100)
-        update_messages = recent_messages.select{ |m| m.body.downcase.include?(I18n.t('closed')) || m.body.downcase.include?(I18n.t('open'))}.sort_by{|m| m.created_at}.reverse[0..20]
+        update_messages = recent_messages.select{ |m| m.body.downcase.include?("open") || m.body.downcase.include?("مفتوح") || m.body.downcase.include?("closed") || m.body.downcase.include?("مغلق")}.sort_by{|m| m.created_at}.reverse[0..20]
 
         # weights messages by log time since they were received
         open_weight = 0
         closed_weight = 0
         update_messages.each do |message|
           weight = 1 / (Math.log(Time.now - message.created_at) ** 2)
-          if message.body.downcase.include?(I18n.t('open'))
+          if message.body.downcase.include?("open")
             open_weight += weight
           elsif message.body.downcase.include?(I18n.t('closed'))
             closed_weight += weight
