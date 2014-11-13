@@ -24,10 +24,9 @@
   .col-md-12
     %h3
       =I18n.t('recent_updates')
-    %hr/
     .table-responsive
       %table.table.table-striped
-        -@all_messages.each do |message|
+        -@all_messages[0..19].each do |message|
           %tr
             %td.message_text
               =message.text

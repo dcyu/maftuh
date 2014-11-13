@@ -46,7 +46,7 @@ en:
 
   open: "open"
   closed: "closed"
-  question_mark: "?"
+  question: "?"
   open_question: "Is this checkpoint open?"
   name: "Name"
   status: "Status"
