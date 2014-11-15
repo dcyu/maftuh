@@ -19,15 +19,17 @@
 
 jQuery ->
 
+  search_lang = $(".hidden:first").text()
+    
   # DataTable with exports
   $('#datatable').DataTable(
     "dom": 'T<"clear">lfrtip',
     "paging": false,
     "info":false,
     "tableTools": {
-        "aButtons": []
+      "aButtons": []
     },
     "language": {
-      "search": "تفتيش:"
+      "search": search_lang
     }
   )

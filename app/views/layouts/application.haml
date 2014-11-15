@@ -3,7 +3,7 @@
   %head
     %title Maftuh
     = stylesheet_link_tag    "application", media: "all"
-    -if params[:locale] == "ar"
+    -if I18n.locale == :ar
       :css
         body {
           text-align: right;
