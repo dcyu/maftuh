@@ -12,7 +12,8 @@ ar:
   recent_updates: "تحديثات مؤخرا"
 
   checkpoint: 'حاجز'
-  new_checkpoint: "New Checkpoint"
+  new_checkpoint: "تفتيش جديدة"
+  create_new_checkpoint: "خلق حاجز جديد"
   checkpoint_currently: "حاجز %{name}"
   checkpoints: 'حواجز'
   all_checkpoints: 'كل حواجز'
