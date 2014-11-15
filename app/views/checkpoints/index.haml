@@ -23,7 +23,14 @@
             %td{class: 'open-true bold'}= I18n.t('open').capitalize
           -else
             %td{class: 'open-false bold'}= I18n.t('closed').capitalize
-          %td= c.messages.last.created_at.to_formatted_s(:long) if c.messages.present?
+          - if c.messages.present?
+            - last_message = c.messages.last.created_at.to_formatted_s(:long)
+            - month = last_message.to_s.split(" ").first.downcase
+            - date = last_message.to_s.split(" ")[1..-1].join(" ")
+            %td= I18n.locale == :ar ? I18n.t(month) + " " + date : last_message
+          - else
+            %td= nil
+
 
 %br/
 

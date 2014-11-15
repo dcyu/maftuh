@@ -13,6 +13,7 @@ ar:
 
   checkpoint: 'حاجز'
   new_checkpoint: "تفتيش جديدة"
+  create: "خلق"
   create_new_checkpoint: "خلق حاجز جديد"
   checkpoint_currently: "حاجز %{name}"
   checkpoints: 'حواجز'
@@ -22,13 +23,25 @@ ar:
   last_updated_at: 'آخر تحديث'
   open: "مفتوح"
   closed: "مغلق"
-  open_question: "Is this checkpoint open?"
-  name: "Name"
-  yes_open: "Yes"
-  no_open: "No"
+  open_question: "هو هذا الحاجز مفتوحة؟"
+  name: "اسم"
+  yes_open: "نعم"
+  no_open: "لا"
   search: "تفتيش:"
+  january: "يناير"
+  february: "فبراير"
+  march: "مسيرة"
+  april: "نيسان"
+  may: "قد"
+  june: "يونيو"
+  july: "يوليو"
+  august: "أغسطس"
+  september: "سبتمبر"
+  october: "أكتوبر"
+  november: "تشرين الثاني"
+  december: "ديسمبر"
 
   errors:
     name:
-      unique: "Name of checkpoint must be unique"
+      unique: "الاسم موجود بالفعل وهناك نقطة تفتيش مع هذا"
 

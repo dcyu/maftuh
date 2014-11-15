@@ -25,6 +25,7 @@ en:
   checkpoint: "Checkpoint"
   checkpoints: "Checkpoints"
   new_checkpoint: "New Checkpoint"
+  create: "Create"
   create_new_checkpoint: "Create New Checkpoint"
   checkpoint_currently: "%{name} Checkpoint is currently"
   all_checkpoints: "All Checkpoints"
@@ -56,6 +57,7 @@ en:
   is_open: "%{name} is open, "
   is_closed: "%{name} is closed, "
   search: "Search:"
+  november: "November"
 
   errors:
     name:
