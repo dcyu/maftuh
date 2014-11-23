@@ -17,6 +17,7 @@ ar:
   create_new_checkpoint: "خلق حاجز جديد"
   checkpoint_currently: "حاجز %{name}"
   checkpoints: 'حواجز'
+  checkpoint_not_found: "حاجز لم يتم العثور"
   all_checkpoints: 'كل حواجز'
   select_checkpoint: 'اختر حاجز'
   status: 'وضع'

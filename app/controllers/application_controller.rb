@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
       @long = result.longitude.to_i
 
       @is_english = (@long < -60 && @long > -130) && (@lat > 20 && @lat < 50 )
+      @is_english = @long == 0 && @lat == 0
 
       unless @is_english
         I18n.locale = :ar
