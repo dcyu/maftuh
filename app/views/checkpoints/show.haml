@@ -1,5 +1,5 @@
 %h1
-  =t('checkpoint_currently', name: @checkpoint.name_locale)
+  =t('checkpoint_currently', name: @checkpoint.name)
   -if @checkpoint.open
     %strong.green=t('open')
   -else
@@ -9,7 +9,7 @@
   %a{:href => "https://www.twitter.com/testmaftuh", target: "_blank"}
     @testmaftuh
 
-  =t('instructions2', checkpoint: @checkpoint.name_locale) 
+  =t('instructions2', checkpoint: @checkpoint.name) 
 
 .row
   .col-md-6
@@ -40,22 +40,21 @@
               %strong
                 =message.created_at.to_formatted_s(:long)
 
--if @geo
-  %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&language=#{params[:locale]}", :type => "text/javascript"}
-  :javascript
-    function initialize() {
-      var geo
-      var mapOptions = {
-        center: { lat: #{@geo.first}, lng: #{@geo.last}},
-        zoom: 9,
-        mapTypeId: google.maps.MapTypeId.TERRAIN
-      };
-      var map = new google.maps.Map(document.getElementById('map-canvas'),
-          mapOptions);
-      var marker = new google.maps.Marker({
-          position: {lat: #{@geo.first}, lng: #{@geo.last}},
-          map: map,
-          title:"#{@checkpoint.name} Checkpoint"
-      });
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
+%script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&language=#{params[:locale]}", :type => "text/javascript"}
+:javascript
+  function initialize() {
+    var geo
+    var mapOptions = {
+      center: { lat: #{@checkpoint.lat}, lng: #{@checkpoint.lng}},
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+    var map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+    var marker = new google.maps.Marker({
+        position: {lat: #{@checkpoint.lat}, lng: #{@checkpoint.lng}},
+        map: map,
+        title:"#{@checkpoint.name} Checkpoint"
+    });
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);

@@ -176,6 +176,10 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.1.2)
       json (~> 1.4)
+    roo (1.13.2)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.4)
@@ -192,6 +196,7 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
+    ruby-ole (1.2.11.7)
     rubyzip (1.1.4)
     sass (3.2.19)
     sass-rails (4.0.4)
@@ -209,6 +214,8 @@ GEM
       websocket (~> 1.0.4)
     simple_oauth (0.3.0)
     slop (3.5.0)
+    spreadsheet (1.0.0)
+      ruby-ole (>= 1.0)
     sprockets (2.11.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -275,6 +282,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.0.2)
   rails_12factor
+  roo
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.0)
   sdoc

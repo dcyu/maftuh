@@ -1,14 +1,23 @@
 class Checkpoint < ActiveRecord::Base
   validates :open, inclusion: { :in => [true, false] }
-  validates :name, presence: true, uniqueness: true
+  validates :en_name, presence: true, uniqueness: true
 
+  belongs_to :district
   has_many :messages
 
-  def name_locale
+  def name
     if I18n.locale == :ar
-      ar
+      ar_name
     else
-      name
+      en_name
+    end
+  end
+
+  def description
+    if I18n.locale == :ar
+      ar_description
+    else
+      en_description
     end
   end
 end

@@ -1,0 +1,21 @@
+%h1 Listing districts
+
+%table
+  %tr
+    %th En name
+    %th Ar name
+    %th
+    %th
+    %th
+
+  - @districts.each do |district|
+    %tr
+      %td= district.en_name
+      %td= district.ar_name
+      %td= link_to 'Show', district
+      %td= link_to 'Edit', edit_district_path(district)
+      %td= link_to 'Destroy', district, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New District', new_district_path

@@ -24,9 +24,8 @@ class CheckpointsController < ApplicationController
     if @checkpoint.nil?
       redirect_to checkpoints_path
     end
-    @geo = Geocoder.coordinates(@checkpoint.name)
 
-    @tweets = $twitter.search("to:testmaftuh #{@checkpoint.name}", result_type: "recent").to_a + $twitter.search("to:testmaftuh #{@checkpoint.ar}", result_type: "recent").to_a
+    @tweets = $twitter.search("to:testmaftuh #{@checkpoint.name}", result_type: "recent").to_a + $twitter.search("to:testmaftuh #{@checkpoint.ar_name}", result_type: "recent").to_a
 
     @tweets.each do |tweet|
       m = Message.new

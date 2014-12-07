@@ -55,6 +55,7 @@ en:
   last_updated_at: "Last Updated At"
   is_open: "%{name} is open, "
   is_closed: "%{name} is closed, "
+  search: "Search"
 
   errors:
     name:

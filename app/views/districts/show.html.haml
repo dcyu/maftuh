@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b En name:
+  = @district.en_name
+%p
+  %b Ar name:
+  = @district.ar_name
+
+= link_to 'Edit', edit_district_path(@district)
+\|
+= link_to 'Back', districts_path

@@ -1,4 +1,6 @@
 Maftuh::Application.routes.draw do
+  resources :districts
+
   root 'checkpoints#index'
   resources :checkpoints
 

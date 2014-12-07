@@ -37,7 +37,7 @@
                 -checkpoints = Checkpoint.all
                 -checkpoints.each do |checkpoint|
                   %li
-                    =link_to checkpoint.name_locale, checkpoint_path(checkpoint)
+                    =link_to checkpoint.name, checkpoint_path(checkpoint)
                 %li.divider
                 %li
                   =link_to t('all_checkpoints'), checkpoints_path

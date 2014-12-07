@@ -25,6 +25,7 @@ ar:
   name: "Name"
   yes_open: "Yes"
   no_open: "No"
+  search: "تفتيش"
 
   errors:
     name:

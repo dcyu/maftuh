@@ -11,12 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111062527) do
+ActiveRecord::Schema.define(version: 20141207223433) do
 
   create_table "checkpoints", force: true do |t|
-    t.string  "name"
-    t.boolean "open"
-    t.string  "ar"
+    t.string   "en_name"
+    t.string   "ar_name"
+    t.string   "lat"
+    t.string   "lng"
+    t.text     "en_description"
+    t.text     "ar_description"
+    t.boolean  "open"
+    t.integer  "district_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "districts", force: true do |t|
+    t.string   "en_name"
+    t.string   "ar_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "messages", force: true do |t|
