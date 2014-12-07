@@ -85,7 +85,7 @@ class TwilioController < ApplicationController
         end
       end
     end
-    twiml = Twilio::TwiML::Response.new { |r|  r.Message @message }
+    twiml = Twilio::TwiML::Response.new { |r|  r.Message "test" }
     render text: twiml.text
   end
 end

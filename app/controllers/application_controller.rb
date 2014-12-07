@@ -6,6 +6,28 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
    
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    if params[:locale]
+      I18n.locale = params[:locale]
+    else
+      ip = request.remote_ip.to_s
+      result = Geocoder.search(ip).first
+      while result.nil?
+        result = Geocoder.search(ip).first
+      end
+      @lat = result.latitude.to_i
+      @long = result.longitude.to_i
+
+      @is_english = (@long < -60 && @long > -130) && (@lat > 20 && @lat < 50 )
+      @is_english = @long == 0 && @lat == 0
+
+      unless @is_english
+        I18n.locale = :ar
+      end
+    end
+  end
+
+  def default_url_options(options={})
+    logger.debug "default_url_options is passed options: #{options.inspect}\n"
+    { locale: I18n.locale }
   end
 end

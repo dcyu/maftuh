@@ -3,11 +3,19 @@
   %head
     %title Maftuh
     = stylesheet_link_tag    "application", media: "all"
-    -if params[:locale] == "ar"
+    -if I18n.locale == :ar
       :css
-        body {
+        body,
+        table.dataTable thead th {
           text-align: right;
         }
+
+        .dataTables_filter label,
+        .new-checkpoint {
+          float: right;
+        }
+
+
     = javascript_include_tag "application"
     %script{src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"}
     %script{src: "https://www.google.com/jsapi"}

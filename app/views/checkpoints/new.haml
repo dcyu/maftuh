@@ -1,5 +1,5 @@
 .row
-  .col-md-6.offset
+  .new-checkpoint.col-md-6.offset
     .panel.panel-info
       .panel-heading
         = t('new_checkpoint')
@@ -13,7 +13,7 @@
                   %li= msg
 
           .form-group
-            = f.label :name
+            = f.label :name, t('name')
             = f.text_field :name, class: "form-control", placeholder: "..."
 
           .form-group
@@ -29,4 +29,4 @@
                 = f.radio_button :open, "false"
                 = t('no_open')
 
-          = f.submit 'Create', class: " btn btn-default"
+          = f.submit t('create'), class: " btn btn-default"

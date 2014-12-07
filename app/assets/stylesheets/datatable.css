@@ -25,7 +25,7 @@ table.dataTable thead td {
 }
 
 table.dataTable thead th{
-  text-align: right;
+  text-align: left;
 }
 
 table.dataTable thead th:active,
@@ -293,7 +293,6 @@ table.dataTable tbody td.dt-body-nowrap {
 table.dataTable,
 table.dataTable th,
 table.dataTable td {
-  text-align: right;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -312,7 +311,6 @@ table.dataTable td {
 .dataTables_filter label{
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  float: right;
 }
 
 .dataTables_wrapper .dataTables_filter {
