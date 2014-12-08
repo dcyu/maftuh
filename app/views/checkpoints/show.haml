@@ -28,6 +28,18 @@
       -if @all_messages.count > 0
         #chart= render_chart(@chart, 'chart')
 
+.row
+  .col-md-3
+    %h4
+      =link_to t('district_name', name: @checkpoint.district.name), district_path(@checkpoint.district)
+    
+  .col-md-9
+    %h4
+      =@checkpoint.staffing
+      \|
+      =@checkpoint.category
+    =@checkpoint.description
+
 -if @all_messages.count > 0
   .row
     .col-md-12
@@ -48,6 +60,12 @@
               %td
                 %strong
                   =message.created_at.to_formatted_s(:long)
+
+%br/
+%br/
+.row
+  .col-md-12.text-right
+    %em=t('attribution')
 
 %script{:src => "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&language=#{params[:locale]}", :type => "text/javascript"}
 :javascript

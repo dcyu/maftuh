@@ -1,39 +1,42 @@
 %h1 
-  =I18n.t('checkpoints').capitalize
+  =t('checkpoints').capitalize
 %br
 
 .hidden
-  = I18n.t('search')
+  = t('search')
 
 .table-responsive
   %table.table.table-striped#datatable
     %thead
       %tr
         %th.span1
-          = I18n.t('checkpoint')
+          = t('checkpoint')
+        %th.span1
+          = t('district')
         %th.span1 
-          = I18n.t('status')
+          = t('status')
         %th.span2
-          = I18n.t('last_updated_at')
+          = t('last_updated_at')
     %tbody
       - @checkpoints.order(en_name: :asc).each do | c |
         %tr{id: "open-#{c.open}"}
           %td=link_to c.name, checkpoint_path(c)
+          %td=link_to c.district.name, district_path(c.district)
           -if c.open
-            %td.open-true.bold= I18n.t('open').capitalize
+            %td.open-true.bold= t('open').capitalize
           -else
-            %td{class: 'open-false bold'}= I18n.t('closed').capitalize
+            %td{class: 'open-false bold'}= t('closed').capitalize
           - if c.messages.present?
             - last_message = c.messages.last.created_at.to_formatted_s(:long)
             - month = last_message.to_s.split(" ").first.downcase
             - date = last_message.to_s.split(" ")[1..-1].join(" ")
-            %td= I18n.locale == :ar ? I18n.t(month) + " " + date : last_message
+            %td= locale == :ar ? t(month) + " " + date : last_message
           - else
             %td= nil
 
 %br/
 
-=link_to I18n.t('create_new_checkpoint'), new_checkpoint_path
+=link_to t('create_new_checkpoint'), new_checkpoint_path
 
 %br/
 %br/

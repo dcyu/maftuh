@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  attribution: "Checkpoint information courtesy of B'Tselem - The Israeli Information Center for Human Rights in the Occupied Territories"
 
   checkpoint: "Checkpoint"
   checkpoints: "Checkpoints"
@@ -29,6 +29,7 @@ en:
   create_new_checkpoint: "Create New Checkpoint"
   checkpoint_currently: "%{name} Checkpoint is currently"
   all_checkpoints: "All Checkpoints"
+  district_name: "%{name} District"
   select_checkpoint: "Select Checkpoint"
   checkpoint_not_found: "Apologies, your checkpoint could not be found."
   status_update_response: "Thanks for your message. The %{name} checkpoint status has been updated"
@@ -56,13 +57,8 @@ en:
   last_updated_at: "Last Updated At"
   is_open: "%{name} is open, "
   is_closed: "%{name} is closed, "
-<<<<<<< HEAD
-  search: "Search"
-=======
   search: "Search:"
   november: "November"
->>>>>>> f60ec2a87481e1334d8605e47eabe0938da5897c
-
   errors:
     name:
       unique: "Name of checkpoint must be unique"

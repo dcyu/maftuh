@@ -24,5 +24,7 @@ end
   c.lat = s.cell(row_num, 'N')
   c.district_id = District.find_by(en_name: s.cell(row_num, 'H')).id
   c.open = true
+  c.category = s.cell(row_num, 'B')
+  c.staffing = s.cell(row_num, 'C')
   c.save
 end

@@ -9,6 +9,8 @@ class CreateCheckpoints < ActiveRecord::Migration
       t.text :ar_description
       t.boolean :open
       t.integer :district_id
+      t.string :category
+      t.string :staffing
       t.timestamps
     end
   end

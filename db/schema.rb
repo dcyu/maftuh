@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20141207223433) do
     t.text     "ar_description"
     t.boolean  "open"
     t.integer  "district_id"
+    t.string   "category"
+    t.string   "staffing"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
