@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'quiet_assets'
-  gem 'byebug'
   gem 'guard-livereload', :require => false
   gem 'better_errors'
   gem 'binding_of_caller'

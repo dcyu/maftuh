@@ -34,9 +34,6 @@ GEM
       debug_inspector (>= 0.0.1)
     buftok (0.2.0)
     builder (3.1.4)
-    byebug (3.2.0)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
     callsite (0.0.11)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -56,10 +53,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    columnize (0.8.9)
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
-    debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
@@ -257,7 +252,6 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  byebug
   capybara (~> 2.2.0)
   coffee-rails (~> 4.0.0)
   database_cleaner (~> 1.2.0)
@@ -275,7 +269,7 @@ DEPENDENCIES
   meta_request
   pg
   quiet_assets
-  rails (= 4.0.2)
+  rails
   rails_12factor
   roo
   rspec-rails (~> 3.0.0)
