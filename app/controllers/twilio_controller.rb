@@ -21,7 +21,7 @@ class TwilioController < ApplicationController
     is_closed = body.downcase.include?("closed") || body.downcase.include?("مغلق")
 
     checkpoints_en = Checkpoint.select { |checkpoint| body.downcase.include?(checkpoint.name.downcase)}
-    checkpoints_ar = Checkpoint.select { |checkpoint| body.include?(checkpoint.ar) if checkpoint.ar} 
+    checkpoints_ar = Checkpoint.select { |checkpoint| body.include?(checkpoint.ar_name) if checkpoint.ar_name} 
     checkpoints = checkpoints_ar + checkpoints_en
 
     if checkpoints.empty?
@@ -38,9 +38,9 @@ class TwilioController < ApplicationController
         if checkpoints_ar.present?
           checkpoints.each do |checkpoint|
             if checkpoint.open
-              @message += " ،مفتوح " + checkpoint.ar 
+              @message += " ،مفتوح " + checkpoint.ar_name 
             else
-              @message += " ،مغلق " + checkpoint.ar
+              @message += " ،مغلق " + checkpoint.ar_name
             end
           end
           @message = @message[2..-1]
@@ -79,7 +79,7 @@ class TwilioController < ApplicationController
         end
 
         if checkpoints_ar.present?
-          @message = "شكرا لرسالتك. يتم تحديث وضع حاجز #{checkpoints.first.ar}."
+          @message = "شكرا لرسالتك. يتم تحديث وضع حاجز #{checkpoints.first.ar_name}."
         else
           @message = "Thanks for your message. The #{checkpoints.first.name} checkpoint status has been updated"
         end
